@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Aptos', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Baskerville', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+    --color-cream: #f2ecdf;
+    --color-paper: #fbf9f3;
+    --color-ink: #1d2823;
+    --color-forest: #0b3d2e;
+    --color-gold: #cbb071;
+    --color-clay: #80602f;
+    --color-mist: #e5ece6;
+}
+
+@layer base {
+    :root {
+        color-scheme: light;
+        font-family: var(--font-sans);
+        background: var(--color-paper);
+        color: var(--color-ink);
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-width: 320px;
+        margin: 0;
+    }
+
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-gold);
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+@layer components {
+    .eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.22em] text-clay;
+    }
+
+    .public-input {
+        @apply w-full rounded-md border border-ink/15 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/45 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20;
+    }
+
+    .button-primary {
+        @apply inline-flex items-center justify-center gap-2 rounded-md bg-forest px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-ink hover:shadow-md;
+    }
+
+    .button-light {
+        @apply inline-flex items-center justify-center gap-2 rounded-md border border-white/55 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10;
+    }
+
+    .admin-input {
+        @apply w-full rounded-lg border border-[#ded8ca] bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100;
+    }
+
+    .admin-card {
+        @apply rounded-2xl border border-[#e7e1d5] bg-white p-5 shadow-[0_14px_36px_-32px_rgba(17,49,37,0.55)] dark:border-slate-800 dark:bg-slate-900;
+    }
+}
+
+.js [data-step-panel][hidden] {
+    display: none;
+}

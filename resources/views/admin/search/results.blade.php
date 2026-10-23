@@ -1,0 +1,10 @@
+@extends('layouts.admin')
+
+@section('content')
+    <div><p class="text-xs font-semibold uppercase tracking-[0.18em] text-forest dark:text-emerald-300">Workspace search</p><h1 class="mt-2 font-display text-4xl">Results for “{{ $term }}”</h1></div>
+    <div class="mt-7 grid gap-5 lg:grid-cols-3">
+        <section class="admin-card"><h2 class="font-semibold">Inquiries</h2><div class="mt-4 space-y-3">@forelse ($inquiries as $inquiry)<a class="block rounded-lg bg-slate-50 p-3 hover:bg-mist dark:bg-slate-800/50 dark:hover:bg-forest/20" href="{{ route('admin.inquiries.show', $inquiry) }}"><p class="text-sm font-medium">{{ $inquiry->customer_name }} · {{ $inquiry->event_type }}</p><p class="mt-1 text-xs text-slate-500">{{ $inquiry->reference }}</p></a>@empty<p class="text-sm text-slate-500">No inquiry matches.</p>@endforelse</div></section>
+        <section class="admin-card"><h2 class="font-semibold">Customers</h2><div class="mt-4 space-y-3">@forelse ($customers as $customer)<a class="block rounded-lg bg-slate-50 p-3 hover:bg-mist dark:bg-slate-800/50 dark:hover:bg-forest/20" href="{{ route('admin.customers.show', $customer) }}"><p class="text-sm font-medium">{{ $customer->name }}</p><p class="mt-1 text-xs text-slate-500">{{ $customer->email ?? $customer->phone }}</p></a>@empty<p class="text-sm text-slate-500">No customer matches.</p>@endforelse</div></section>
+        @can('manage-website')<section class="admin-card"><h2 class="font-semibold">Website content</h2><div class="mt-4 space-y-3">@forelse ($content as $entry)<a class="block rounded-lg bg-slate-50 p-3 hover:bg-mist dark:bg-slate-800/50 dark:hover:bg-forest/20" href="{{ route('admin.content.index', ['type' => $entry->type]) }}"><p class="text-sm font-medium">{{ $entry->title }}</p><p class="mt-1 text-xs text-slate-500">{{ Str::headline(str_replace('_', ' ', $entry->type)) }} · {{ Str::headline(str_replace('_', ' ', $entry->status)) }}</p></a>@empty<p class="text-sm text-slate-500">No content matches.</p>@endforelse</div></section>@endcan
+    </div>
+@endsection

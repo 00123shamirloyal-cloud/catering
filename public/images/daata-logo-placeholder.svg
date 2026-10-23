@@ -1,0 +1,8 @@
+<!-- Unofficial placeholder artwork. Replace this file with the approved Daata logo when supplied. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Replaceable Daata brand mark placeholder</title>
+  <rect x="3" y="3" width="90" height="90" rx="25" fill="#0b3d2e"/>
+  <rect x="8" y="8" width="80" height="80" rx="21" fill="none" stroke="#cbb071" stroke-width="1.5"/>
+  <path d="M31 24h17c17 0 27 9 27 24S65 72 48 72H31V24Zm10 9v30h7c11 0 17-5 17-15S59 33 48 33h-7Z" fill="#fbf9f3"/>
+  <circle cx="72" cy="24" r="4" fill="#cbb071"/>
+</svg>
